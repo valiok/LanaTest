@@ -33,6 +33,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 
+import Color from './Colors'
+
 declare const global: {HermesInternal: null | {}};
 
 const FeedStack = createStackNavigator();
@@ -54,14 +56,17 @@ const App = () => {
           tabBarIcon: ({ focused, color, size }) => {
             // You can return any component that you like here!
             if (focused) {
-              return <TestIcon fill="#DB25AE"/>
+              return <TestIcon fill={Color.primary}/>
             }
-            return <TestIcon fill="gray"/>;
+            return <TestIcon fill={Color.gray}/>;
           },
         })}
         tabBarOptions={{
-          activeTintColor: '#DB25AE',
-          inactiveTintColor: 'gray',
+          activeTintColor: Color.primary,
+          inactiveTintColor: Color.gray,
+          tabStyle: {
+            paddingVertical: 5
+        }
         }}>
         <Tab.Screen name="Feed" component={FeeedStackScreen} />
         <Tab.Screen name="Catalog" component={CatalogScreen} />
